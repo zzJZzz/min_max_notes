@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Notes</title>
+  </head>
+  <body>
+    <div class="flex">
+      <%= @notes.each do |note| %>
+        <div class="m-4 shadow-xl card w-96 bg-base-100">
+          <div class="card-title">
+            <%= link_to note.title, note_path(note) %>
+            <div class="card-body">
+              <div class="justify-end card-actions">
+                <%= link_to "Read More", note_path(note), class: "btn-primary" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <%= link_to "New Note", new_note_path, class: "btn" %>
+  </body>
+</html>

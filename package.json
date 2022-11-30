@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "@tiptap/core": "^2.0.0-beta.204",
+    "@tiptap/starter-kit": "^2.0.0-beta.204",
     "daisyui": "^2.42.1"
   }
 }

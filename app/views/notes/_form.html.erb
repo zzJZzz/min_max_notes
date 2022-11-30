@@ -1,0 +1,15 @@
+<div class="flex">
+  <%= form_with model: @note do |form| %>
+    <div>
+      <%= form.text_field :title %>
+    </div>
+    <div>
+      <%= form.text_area :citation, size: "60x10" %>
+    </div>
+    <div>
+      <button type="submit" class="rounded btn-primary">
+        Submit
+      </button>
+    </div>
+  <% end %>
+</div>

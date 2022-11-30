@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_30_171820) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_30_175154) do
   create_table "email_verification_tokens", force: :cascade do |t|
     t.integer "user_id", null: false
     t.index ["user_id"], name: "index_email_verification_tokens_on_user_id"
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.string "title"
+    t.text "citation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "password_reset_tokens", force: :cascade do |t|
@@ -30,6 +37,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_30_171820) do
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
+  create_table "snippets", force: :cascade do |t|
+    t.text "body"
+    t.integer "note_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["note_id"], name: "index_snippets_on_note_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "password_digest", null: false
@@ -43,4 +58,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_30_171820) do
   add_foreign_key "email_verification_tokens", "users"
   add_foreign_key "password_reset_tokens", "users"
   add_foreign_key "sessions", "users"
+  add_foreign_key "snippets", "notes"
 end
